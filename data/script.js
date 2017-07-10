@@ -72,7 +72,7 @@ nightmareOne
   .end()
   .then((result) => {
     const streakData = JSON.stringify({ result: result})
-    fs.writeFile('./data/streakData.json', streakData, 'utf8');
+    fs.writeFile('./streakData.json', streakData, 'utf8');
     // console.log(result, 'result');
   })
   .catch((error) => {
@@ -80,7 +80,8 @@ nightmareOne
   });
 
   nightmareTwo
-    .goto('http://www.vegasinsider.com/mlb/matchups/')
+    // .goto('http://www.vegasinsider.com/mlb/matchups/')
+    .goto('http://www.vegasinsider.com/mlb/matchups/matchups.cfm/date/07-09-17')
     .wait(1000)
     .evaluate(() => {
 
@@ -103,6 +104,7 @@ nightmareOne
       for (let i = 0; i < games.length; i++) {
         array.push({
           game: games[i].innerText,
+          sport: 'MLB',
           teamOne: tableDataClean[ i + (i * 21) ].innerText,
           teamTwo: tableDataClean[ i + 11 + (i * 21) ].innerText,
           pitcherOne: tableDataClean[ i + 1 + (i * 21) ].innerText,
@@ -122,7 +124,7 @@ nightmareOne
     .end()
     .then((result) => {
       const vegasData = JSON.stringify({ result: result})
-      fs.writeFile('./data/streakData.json', vegasData, 'utf8');
+      fs.writeFile('./vegasData.json', vegasData, 'utf8');
 
       // console.log(result, 'result');
     })
