@@ -13,7 +13,8 @@ const seedPrepStreakData = (knex) => {
       startTime: starttime,
       status: status,
       userVoteOptOne: userVote.oppOne,
-      userVoteOptTwo: userVote.oppTwo
+      userVoteOptTwo: userVote.oppTwo,
+      selected: 'false'
     });
   });
 };

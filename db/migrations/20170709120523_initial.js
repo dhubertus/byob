@@ -11,6 +11,7 @@ exports.up = function(knex, Promise) {
       table.string('status');
       table.string('userVoteOptOne');
       table.string('userVoteOptTwo');
+      table.string('selected');
       table.timestamps(true, true);
     }),
 
