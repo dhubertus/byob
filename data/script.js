@@ -1,49 +1,24 @@
 const Nightmare = require('nightmare');
-const nightmareOne = Nightmare({ show: true });
-const nightmareTwo = Nightmare({ show: true });
+const nightmareOne = Nightmare({ show: false });
+const nightmareTwo = Nightmare({ show: false });
 const fs = require('fs');
 
 
 nightmareOne
-  .goto('http://streak.espn.com/en/')
+  // .goto('http://streak.espn.com/en/')
+  .goto('http://streak.espn.com/en/?date=20170709')
   .wait(1000)
   .evaluate(() => {
 
-    // const scrapeEspn = () => {
-    //   let array = []
-    //
-    //   let questions = document.getElementsByClassName('gamequestion');
-    //   let startTime = document.getElementsByClassName('startTime')
-    //   let sport = document.getElementsByClassName('sport-description')
-    //   let opponentOne = document.getElementsByClassName('opponents')
-    //   let opponentTwo = document.getElementsByClassName('last')
-    //   let userVoting = document.getElementsByClassName('wpw')
-    //   let matchUpStatus = document.getElementsByClassName('matchupStatus')
-    //
-    //   for (let i = 0; i < questions.length; i++) {
-    //     array.push({
-    //       question: questions[i].innerText,
-    //       starttime: startTime[i].innerText,
-    //       sport: sport[i].innerText,
-    //       status: matchUpStatus[i].innerText,
-    //       opponents: {
-    //         optionOne: opponentOne[ i + (i + 1) ].innerText,
-    //         optionTwo: opponentOne[ i + (i + 2) ].innerText
-    //       },
-    //       userVote: {
-    //         oppOne: userVoting[ (i * 4) + 2 ].innerText,
-    //         oppTwo: userVoting[ (i * 4) + 4 ].innerText
-    //       }
-    //     })
-    //   }
-    //   return array
-    // }
-
-
-    //NOTE function is not recognized???
-    // scrapeEspn()
-
-    let array = []
+    const removeDotsAndCarrots = (string) => {
+      const newArray = string.split('').map((char) => {
+        if(char === ' ' || char === '«') {
+          return
+        }
+        return char
+      })
+      return newArray.join('')
+    }
 
     let questions = document.getElementsByClassName('gamequestion');
     let startTime = document.getElementsByClassName('startTime')
@@ -53,15 +28,21 @@ nightmareOne
     let userVoting = document.getElementsByClassName('wpw')
     let matchUpStatus = document.getElementsByClassName('matchupStatus')
 
+    let opponentOneCleaned = Object.keys(opponentOne).map(key => {
+      return removeDotsAndCarrots(opponentOne[key].innerText)
+    })
+
+    let array = []
+
     for (let i = 0; i < questions.length; i++) {
       array.push({
         question: questions[i].innerText,
         starttime: startTime[i].innerText,
-        sport: sport[i].innerText,
+        sport: sport[17].innerText,
         status: matchUpStatus[i].innerText,
         opponents: {
-          optionOne: opponentOne[ i + (i + 1) ].innerText,
-          optionTwo: opponentOne[ i + (i + 2) ].innerText
+          optionOne: opponentOneCleaned[ i + (i + 1) ],
+          optionTwo: opponentOneCleaned[ i + (i + 2) ]
         },
         userVote: {
           oppOne: userVoting[ (i * 4) + 2 ].innerText,
@@ -73,13 +54,13 @@ nightmareOne
   })
   .end()
   .then((result) => {
+    console.log(result, 'result');
     const streakData = JSON.stringify({ result: result})
     fs.writeFile('./data/streakData.json', streakData, 'utf8');
   })
   .catch((error) => {
-     console.error('Search failed:', error);
+     console.error('Nightmare One Failed:', error);
   });
-
 
 
   nightmareTwo
@@ -97,7 +78,6 @@ nightmareOne
         })
         return newArray.join('')
       }
-
 
       let games = document.getElementsByClassName('viheadernorm');
       let tableDataRaw = document.getElementsByClassName('vicellbg2');
@@ -145,5 +125,5 @@ nightmareOne
 
     })
     .catch((error) => {
-      console.error('Search failed:', error);
+      console.error('Nightmare Two Failed:', error);
     });
