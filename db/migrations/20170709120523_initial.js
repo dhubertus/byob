@@ -31,7 +31,7 @@ exports.up = function(knex, Promise) {
       table.string('currMLOne');
       table.string('currMLTwo');
     })
-  ])
+  ]);
 };
 
 exports.down = function(knex, Promise) {

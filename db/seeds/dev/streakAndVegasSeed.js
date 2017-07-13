@@ -3,15 +3,15 @@ const vegasData = require('../../../data/vegasData');
 
 const seedPrepStreakData = (knex) => {
   return streakData.result.map((gameObj) => {
-    const { question, starttime, sport, status, opponents, userVote } = gameObj
+    const { question, starttime, sport, status, opponents, userVote } = gameObj;
 
     return knex('streak_data').insert({
-      sport: sport,
-      question: question,
+      sport,
+      question,
       optionOne: opponents.optionOne,
       optionTwo: opponents.optionTwo,
       startTime: starttime,
-      status: status,
+      status,
       userVoteOptOne: userVote.oppOne,
       userVoteOptTwo: userVote.oppTwo,
       selected: 'false'
@@ -21,14 +21,14 @@ const seedPrepStreakData = (knex) => {
 
 const seedPrepVegasData = (knex) => {
   return vegasData.result.map((gameOddsObj) => {
-    const { game, teamOne, teamTwo, pitcherOne, pitcherTwo, wlTeamOne, wlTeamTwo, strTeamOne, strTeamTwo, openMLTeamOne, openMLTeamTwo, curMLTeamOne, curMLTeamTwo } = gameOddsObj
+    const { game, teamOne, teamTwo, pitcherOne, pitcherTwo, wlTeamOne, wlTeamTwo, strTeamOne, strTeamTwo, openMLTeamOne, openMLTeamTwo, curMLTeamOne, curMLTeamTwo } = gameOddsObj;
 
     return knex('mlb_odds').insert({
-      game: game,
-      teamOne: teamOne,
-      teamTwo: teamTwo,
-      pitcherOne: pitcherOne,
-      pitcherTwo: pitcherTwo,
+      game,
+      teamOne,
+      teamTwo,
+      pitcherOne,
+      pitcherTwo,
       winLossOne: wlTeamOne,
       winLossTwo: wlTeamTwo,
       streakOne: strTeamOne,
@@ -37,17 +37,17 @@ const seedPrepVegasData = (knex) => {
       openMLTwo: openMLTeamTwo,
       currMLOne: curMLTeamOne,
       currMLTwo: curMLTeamTwo
-    })
-  })
-}
+    });
+  });
+};
 
 exports.seed = function(knex, Promise) {
   return knex('mlb_odds').del()
   .then(() => knex('streak_data').del())
   .then(() => {
-    const newStreakData = seedPrepStreakData(knex)
-    const newVegasData = seedPrepVegasData(knex)
+    const newStreakData = seedPrepStreakData(knex);
+    const newVegasData = seedPrepVegasData(knex);
 
-    return Promise.all([...newStreakData, ...newVegasData])
-  })
-}
+    return Promise.all([...newStreakData, ...newVegasData]);
+  });
+};
