@@ -14,9 +14,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors());
 
-const secretKey = !process.env.CLIENT_SECRET || !config.CLIENT_SECRET
-const username = !process.env.USERNAME || !config.USERNAME
-const password = !process.env.PASSWORD || !config.PASSWORD
+const secretKey = !process.env.CLIENT_SECRET
+const username = !process.env.USERNAME
+const password = !process.env.PASSWORD 
 
 if ( secretKey || username || password ) {
   throw 'Make sure you have a CLIENT_SECRET, USERNAME, and PASSWORD in your .env file';
