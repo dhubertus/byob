@@ -12,33 +12,34 @@ nightmareOne
 
     const removeDotsAndCarrots = (string) => {
       const newArray = string.split('').map((char) => {
-        if(char === ' ' || char === '«') {
-          return
+
+        if (char === ' ' || char === '«') {
+          return;
         }
-        return char
-      })
-      return newArray.join('')
-    }
+        return char;
+      });
+
+      return newArray.join('');
+    };
 
     let questions = document.getElementsByClassName('gamequestion');
-    let startTime = document.getElementsByClassName('startTime')
-    let sport = document.getElementsByClassName('sport-description')
-    let opponentOne = document.getElementsByClassName('opponents')
-    let opponentTwo = document.getElementsByClassName('last')
-    let userVoting = document.getElementsByClassName('wpw')
-    let matchUpStatus = document.getElementsByClassName('matchupStatus')
+    let startTime = document.getElementsByClassName('startTime');
+    let sport = document.getElementsByClassName('sport-description');
+    let opponentOne = document.getElementsByClassName('opponents');
+    let userVoting = document.getElementsByClassName('wpw');
+    let matchUpStatus = document.getElementsByClassName('matchupStatus');
 
     let opponentOneCleaned = Object.keys(opponentOne).map(key => {
-      return removeDotsAndCarrots(opponentOne[key].innerText)
-    })
+      return removeDotsAndCarrots(opponentOne[key].innerText);
+    });
 
-    let array = []
+    let array = [];
 
     for (let i = 0; i < questions.length; i++) {
       array.push({
         question: questions[i].innerText,
         starttime: startTime[i].innerText,
-        sport: sport[17].innerText,
+        sport: sport[i].innerText,
         status: matchUpStatus[i].innerText,
         opponents: {
           optionOne: opponentOneCleaned[ i + (i + 1) ],
@@ -48,22 +49,22 @@ nightmareOne
           oppOne: userVoting[ (i * 4) + 2 ].innerText,
           oppTwo: userVoting[ (i * 4) + 4 ].innerText
         }
-      })
+      });
     }
-    return array
+    return array;
   })
   .end()
   .then((result) => {
-    console.log(result, 'result');
-    const streakData = JSON.stringify({ result: result})
+    const streakData = JSON.stringify({ result });
+
     fs.writeFile('./data/streakData.json', streakData, 'utf8');
   })
   .catch((error) => {
-     console.error('Nightmare One Failed:', error);
+    console.error('Nightmare One Failed:', error);
   });
 
 
-  nightmareTwo
+nightmareTwo
     // .goto('http://www.vegasinsider.com/mlb/matchups/')
     .goto('http://www.vegasinsider.com/mlb/matchups/matchups.cfm/date/07-09-17')
     .wait(1000)
@@ -71,31 +72,33 @@ nightmareOne
 
       const removeDotsAndCarrots = (string) => {
         const newArray = string.split('').map((char) => {
-          if(char === ' ' || char === '«') {
-            return
+          if (char === ' ' || char === '«') {
+            return;
           }
-          return char
-        })
-        return newArray.join('')
-      }
+          return char;
+        });
+
+        return newArray.join('');
+      };
 
       let games = document.getElementsByClassName('viheadernorm');
       let tableDataRaw = document.getElementsByClassName('vicellbg2');
       let tableDataClean = Object.keys(tableDataRaw).reduce((acc, val) => {
 
-        if(!tableDataRaw[val].innerText.includes('Push') &&
+        if (!tableDataRaw[val].innerText.includes('Push') &&
            !tableDataRaw[val].innerText.includes('Cover') &&
            !tableDataRaw[val].innerText.includes('Under') &&
            !tableDataRaw[val].innerText.includes('Over')) {
-             console.log(tableDataRaw[val])
-             const result = removeDotsAndCarrots(tableDataRaw[val].innerText)
-             acc.push(result)
+          const result = removeDotsAndCarrots(tableDataRaw[val].innerText);
+
+          acc.push(result);
         }
-        return acc
-      }, [])
+
+        return acc;
+      }, []);
 
 
-      let array = []
+      let array = [];
 
       for (let i = 0; i < games.length; i++) {
         array.push({
@@ -113,14 +116,15 @@ nightmareOne
           openMLTeamTwo: tableDataClean[ i + 15 + (i * 21) ],
           curMLTeamOne: tableDataClean[ i + 6 + (i * 21) ],
           curMLTeamTwo: tableDataClean[ i + 17 + (i * 21) ]
-        })
+        });
       }
-      return array
+      return array;
     })
     .end()
     .then((result) => {
 
-      const vegasData = JSON.stringify({ result: result })
+      const vegasData = JSON.stringify({ result });
+
       fs.writeFile('./data/vegasData.json', vegasData, 'utf8');
 
     })
