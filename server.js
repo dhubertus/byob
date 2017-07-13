@@ -10,11 +10,9 @@ const cors = require('cors');
 const jwt = require('jsonwebtoken');
 const config = require('dotenv').config();
 
-
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors());
-
 
 const secretKey = !process.env.CLIENT_SECRET || !config.CLIENT_SECRET
 const username = !process.env.USERNAME || !config.USERNAME
