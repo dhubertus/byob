@@ -132,7 +132,10 @@ app.get('/api/v1/questions/:singleQuestion', (req, res) => {
 app.post('/api/v1/authenticate', (req, res) => {
   const userInfo = req.body;
 
-  if (userInfo.username !== config.USERNAME ||  userInfo.password !== config.PASSWORD) {
+  const username = process.env.USERNAME || config.USERNAME;
+  const password = process.env.PASSWORD || config.PASSWORD;
+
+  if (userInfo.username !== username ||  userInfo.password !== password) {
     res.status(403).send({
       success: false,
       message: 'Invalid Credentials'
