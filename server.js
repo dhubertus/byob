@@ -15,11 +15,17 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors());
 
-if (!config.CLIENT_SECRET || !config.USERNAME || !config.PASSWORD) {
+
+const secretKey = !config.CLIENT_SECRET || !process.env.CLIENT_SECRET
+const username = !config.USERNAME || !process.env.USERNAME
+const password = !config.PASSWORD || !process.env.PASSWORD
+
+if ( secretKey || username || password ) {
   throw 'Make sure you have a CLIENT_SECRET, USERNAME, and PASSWORD in your .env file';
 }
 
-app.set('secretKey', config.CLIENT_SECRET);
+
+app.set('secretKey', config.CLIENT_SECRET || process.env.CLIENT_SECRET );
 
 const checkAuthorization = (req, res, next) => {
 
