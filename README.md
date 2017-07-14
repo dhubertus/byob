@@ -75,7 +75,7 @@ ___________________________________________________________________________
 } 
 ___________________________________________________________________________
 
-### NOTE: With the current seeded data the below delete end points will delete entire tables since all games are final. And the other two would be user for removing stale data for incoming up to date data. 
+### NOTE: With the current seeded data the below delete end points will delete entire tables since all games are final. The other two would be used for removing stale data for incoming up to date data. 
 ___________________________________________________________________________
 
 [DELETE - Delete All Final Results](https://github.com/dhubertus/byob/blob/master/server.js#L227-L239)
