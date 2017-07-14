@@ -37,13 +37,24 @@ ___________________________________________________________________________
 [POST - Authentication](https://github.com/dhubertus/byob/blob/master/server.js#L127-L149)
 * (Auth) - Allows the user to login allowing them to actually place their bets.
 
-* Clone repo --> npm i --> npm start --> Post to '/authentication' with body: {"password": "guy", "password": "fieri"}
+* Post to '/authentication' with body: {"password": "guy", "password": "fieri"}
 ___________________________________________________________________________
 
 
 [POST - Add New Question](https://github.com/dhubertus/byob/blob/master/server.js#L164-L186)
 * (New Question) - Auth Needed - When user requests updated prop bet list this endpoint allows for the questions to be added to the database.
 
+* Post to '/api/v1/newQuestion' with body: {
+            "question": "Who will WIN this matchup?",
+            "starttime": "7:00pm",
+            "sport": "MLB",
+            "status": "In Progress",
+            "optionOne": "950 Yankees",
+            "optionTwo": "951 Red Sox",
+            "oppOne": "40%",
+            "oppTwo": "60%",
+            "token:   eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImZvbyIsInBhc3N3b3JkIjoiYmFyIiwiaWF0IjoxNDk5ODk1NzY4LCJleHAiOjE1MDAwNjg1Njh9.u1qyb_k2LG8_oDMpiTs1FCw5sgG9jbk6atdazxi3J5o"
+          }
 ___________________________________________________________________________
 
 
