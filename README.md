@@ -11,6 +11,7 @@
 * (All Questions) - Allows the user to recieve all the current prop bets in order to make a high level decision on which they are intereseted in.
 
 [TEST WITH THIS LINK](https://byob-dave-hubertus.herokuapp.com/api/v1/questions)
+___________________________________________________________________________
 
 [GET - All MLB Betting Odds](https://github.com/dhubertus/byob/blob/master/server.js#L73-L85)
 * (All Odds) - Allows the user to recieve all odds from a specific sport 
