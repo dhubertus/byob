@@ -8,26 +8,26 @@
 * The idea was to have an app that is constantly scrapping up to date information for the user throughout the day. However for the purpose of this project I have scrapped older data becasue a) its consistent and b) its the all-star break and I scraped baseball data... 
 
 [GET - All Questions/Prop Bets](https://github.com/dhubertus/byob/blob/master/server.js#L58-L70)
-* (All Questions) - Allows the user to recieve all the current prop bets in order to make a high level decision on which they are intereseted in.
+* (All Questions) - Allows the user to recieve all the current prop bets in order to make a high level decision on which they are intereseted in.</br>
 
 [TEST WITH THIS LINK](https://byob-dave-hubertus.herokuapp.com/api/v1/questions)
 ___________________________________________________________________________
 
 [GET - All MLB Betting Odds](https://github.com/dhubertus/byob/blob/master/server.js#L73-L85)
-* (All Odds) - Allows the user to recieve all odds from a specific sport 
+* (All Odds) - Allows the user to recieve all odds from a specific sport.</br>
 
 [TEST WITH THIS LINK](https://byob-dave-hubertus.herokuapp.com/api/v1/odds)
 ___________________________________________________________________________
 
 
 [GET - Single Question/Prop Bet](https://github.com/dhubertus/byob/blob/master/server.js#L105-L118)
-* (Single Question) - Allows the user to select a prop bet and recieve more information pertaining to the specific question.
+* (Single Question) - Allows the user to select a prop bet and recieve more information pertaining to the specific question.</br>
 [TEST WITH THIS LINK](https://byob-dave-hubertus.herokuapp.com/api/v1/questions/NBA%20Summer%20League%20(Las%20Vegas,NV):%20Who%20will%20WIN%20this%20matchup?)
 
 ___________________________________________________________________________
 
 [GET - Single Set Odds](https://github.com/dhubertus/byob/blob/master/server.js#L88-L102)
-* (Single Odds) - Allows the user to then select the 'up to date' vegas odds for this game to assits with their decision.
+* (Single Odds) - Allows the user to then select the 'up to date' vegas odds for this game to assits with their decision.</br>
 [TEST WITH THIS LINK](https://byob-dave-hubertus.herokuapp.com/api/v1/odds/902%20Chi.%20Cubs)
 ___________________________________________________________________________
 
