@@ -1,6 +1,9 @@
 [![CircleCI](https://circleci.com/gh/dhubertus/byob/tree/master.svg?style=svg)](https://circleci.com/gh/dhubertus/byob/tree/master)
 
+# BYOB - Combining Prop Bets with Betting Odds
+
 [GET - All Questions/Prop Bets](https://github.com/dhubertus/byob/blob/master/server.js#L58-L70)
+#### asdfasdfasdf
 
 [GET - All MLB Betting Odds](https://github.com/dhubertus/byob/blob/master/server.js#L73-L85)
 
