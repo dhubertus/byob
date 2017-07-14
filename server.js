@@ -192,7 +192,7 @@ app.patch('/api/v1/removeSelection', checkAuthorization, (req, res) => {
       selected: 'false'
     })
     .then(result => {
-      if (result.length) {
+      if (result === 1) {
         res.status(200).json(result);
       } else {
         res.status(422).json({ error: 'There was an error and this item was not triggered false!' });
@@ -227,7 +227,7 @@ app.patch('/api/v1/selection', checkAuthorization, (req, res) => {
 app.delete('/api/v1/deleteFinal', checkAuthorization, (req, res) => {
   database('streak_data').where('status', 'Final').del()
     .then(result => {
-      if (result.length) {
+      if (result >= 1) {
         res.status(200).json(result);
       } else {
         res.status(404).json({ error: 'There were no final results to delete!' });
@@ -242,7 +242,7 @@ app.delete('/api/v1/deleteFinal', checkAuthorization, (req, res) => {
 app.delete('/api/v1/deleteAllStreak', checkAuthorization, (req, res) => {
   database('streak_data').del()
     .then(result => {
-      if (result.length) {
+      if (result >= 1) {
         res.status(200).json(result);
       } else {
         res.status(404).json({ error: 'There were no questions to delete!' });
@@ -257,7 +257,7 @@ app.delete('/api/v1/deleteAllStreak', checkAuthorization, (req, res) => {
 app.delete('/api/v1/deleteAllOdds', checkAuthorization, (req, res) => {
   database('mlb_odds').del()
     .then(result => {
-      if (result.length) {
+      if (result >= 1) {
         res.status(200).json(result);
       } else {
         res.status(404).json({ error: 'There were no odds to delete!' });

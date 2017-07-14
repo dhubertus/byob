@@ -229,4 +229,146 @@ describe("API Routes", () => {
       done();
     });
   });
+
+  it("should not remove a selection when it hits /api/v1/removeSelection with proper body and improper authentication", (done) => {
+    chai.request(server)
+    .patch("/api/v1/removeSelection")
+    .send({
+      token: "FAKE TOKEN"
+    })
+    .end((err, res) => {
+      res.body.message.should.equal("Invalid authorization token.");
+      res.should.have.status(403);
+      res.should.be.json;
+      done();
+    });
+  });
+
+  it("should remove a matched selection when it hits /api/v1/removeSelection with proper body and proper authentication", (done) => {
+    chai.request(server)
+    .patch("/api/v1/removeSelection")
+    .send({
+      token
+    })
+    .end((err, res) => {
+      res.should.have.status(200);
+      res.body.should.equal(1);
+      res.should.be.json;
+      done();
+    });
+  });
+
+  it("should not remove an unmatched selection when it hits /api/v1/removeSelection with proper body and proper authentication", (done) => {
+    chai.request(server)
+    .patch("/api/v1/removeSelection")
+    .send({
+      token
+    })
+    .end((err, res) => {
+      res.should.have.status(422);
+      res.body.error.should.equal("There was an error and this item was not triggered false!");
+      res.should.be.json;
+      done();
+    });
+  });
+
+
+});
+
+
+describe("delete Routes", () => {
+
+    var token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imd1eSIsInBhc3N3b3JkIjoiZmllcmkiLCJpYXQiOjE0OTk5NzU3MTQsImV4cCI6MTUwMTE4NTcxNH0.eyUx3Sf0cKv7I48fyektD3sZdMkyGdLaZ1J30IE7zTY";
+
+  before((done) => {
+    knex.migrate.latest()
+    .then(() => {
+      knex.seed.run();
+    })
+    .then(() => {
+      done();
+    });
+  });
+
+  it("should not delete games that have ended if not authorized", (done) => {
+    chai.request(server)
+    .delete("/api/v1/deleteFinal")
+    .send({
+      token: "FAKE TOKEN"
+    })
+    .end((err, res) => {
+      res.should.have.status(403);
+      res.should.be.json;
+      done();
+    });
+  });
+
+  it("should delete games that have ended if authorized", (done) => {
+    chai.request(server)
+    .delete("/api/v1/deleteFinal")
+    .send({
+      token
+    })
+    .end((err, res) => {
+      res.should.have.status(200);
+      res.body.should.be.above(0);
+      res.should.be.json;
+      done();
+    });
+  });
+
+  it("should return error if there are no games to delete", (done) => {
+    chai.request(server)
+    .delete("/api/v1/deleteFinal")
+    .send({
+      token
+    })
+    .end((err, res) => {
+      res.should.have.status(404);
+      res.body.error.should.equal("There were no final results to delete!");
+      res.should.be.json;
+      done();
+    });
+  });
+
+  it("should not delete odds if unauthorized", (done) => {
+    chai.request(server)
+    .delete("/api/v1/deleteAllOdds")
+    .send({
+      token: "FAKE TOKEN"
+    })
+    .end((err, res) => {
+      res.should.have.status(403);
+      res.should.be.json;
+      done();
+    });
+  });
+
+  it("should delete odds if authorized", (done) => {
+    chai.request(server)
+    .delete("/api/v1/deleteAllOdds")
+    .send({
+      token
+    })
+    .end((err, res) => {
+      res.should.have.status(200);
+      res.body.should.be.above(0);
+      res.should.be.json;
+      done();
+    });
+  });
+
+  it("should return error if there are no odds to delete", (done) => {
+    chai.request(server)
+    .delete("/api/v1/deleteAllOdds")
+    .send({
+      token
+    })
+    .end((err, res) => {
+      res.should.have.status(404);
+      res.body.error.should.equal("There were no odds to delete!");
+      res.should.be.json;
+      done();
+    });
+  });
 });
