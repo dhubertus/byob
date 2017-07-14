@@ -271,8 +271,6 @@ describe("API Routes", () => {
       done();
     });
   });
-
-
 });
 
 
@@ -318,6 +316,16 @@ describe("delete Routes", () => {
   });
 
   it("should return error if there are no games to delete", (done) => {
+    chai.request(server)
+    .delete("/api/v1/deleteFinal")
+    .send({
+      token
+    })
+    .end((err, res) => {
+      res.should.have.status(200);
+      res.should.be.json;
+    });
+
     chai.request(server)
     .delete("/api/v1/deleteFinal")
     .send({
