@@ -2,7 +2,7 @@
 
 # BYOB - Combining Prop Bets with Betting Odds
 
-#### Using nightmare I scraped [ESPN](http://streak.espn.com/en/) and [VegasInsider](http://www.vegasinsider.com/mlb/matchups/) to assist making your crappy bet a little less crappy.
+#### Using nightmare I scraped [ESPN](http://streak.espn.com/en/) and [VegasInsider](http://www.vegasinsider.com/mlb/matchups/) to assist in making your crappy bet a little less crappy.
 * The idea was to have an app that is constantly scrapping up to date information for the user throughout the day. However for the purpose of this project I have scrapped older data becasue a) its consistent and b) its the all-star break and I scraped baseball data... 
 
 [GET - All Questions/Prop Bets](https://github.com/dhubertus/byob/blob/master/server.js#L58-L70)
