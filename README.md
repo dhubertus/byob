@@ -2,6 +2,8 @@
 
 # BYOB - Combining Prop Bets with Betting Odds
 
+
+### [Hosted on Heroku](https://byob-dave-hubertus.herokuapp.com/)
 #### Using nightmare I scraped [ESPN](http://streak.espn.com/en/) and [VegasInsider](http://www.vegasinsider.com/mlb/matchups/) to assist in making your crappy bet a little less crappy.
 * The idea was to have an app that is constantly scrapping up to date information for the user throughout the day. However for the purpose of this project I have scrapped older data becasue a) its consistent and b) its the all-star break and I scraped baseball data... 
 
