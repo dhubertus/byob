@@ -2,7 +2,7 @@ module.exports = {
 
   development: {
     client: 'pg',
-    connection: 'postgres://localhost/espn_streak_test',
+    connection: 'postgres://localhost/espn_streak',
     migrations: {
       directory: 'db/migrations'
     },
