@@ -136,7 +136,7 @@ describe("API Routes", () => {
       "optionTwo": "951 Red Sox",
       "oppOne": "40%",
       "oppTwo": "60%",
-      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImZvbyIsInBhc3N3b3JkIjoiYmFyIiwiaWF0IjoxNDk5ODk1NzY4LCJleHAiOjE1MDAwNjg1Njh9.u1qyb_k2LG8_oDMpiTs1FCw5sgG9jbk6atdazxi3J5o"
+      token
     })
     .end((err, res) => {
       res.should.have.status(200);
@@ -150,7 +150,7 @@ describe("API Routes", () => {
     .post("/api/v1/newQuestion")
     .send({
       "qasdfjaksdfj": "Who will WIN this matchup?",
-      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImZvbyIsInBhc3N3b3JkIjoiYmFyIiwiaWF0IjoxNDk5ODk1NzY4LCJleHAiOjE1MDAwNjg1Njh9.u1qyb_k2LG8_oDMpiTs1FCw5sgG9jbk6atdazxi3J5o"
+      token
     })
     .end((err, res) => {
       res.should.have.status(422);
