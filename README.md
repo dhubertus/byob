@@ -10,11 +10,17 @@
 [GET - All Questions/Prop Bets](https://github.com/dhubertus/byob/blob/master/server.js#L58-L70)
 * (All Questions) - Allows the user to recieve all the current prop bets in order to make a high level decision on which they are intereseted in.
 
+[TEST WITH THIS LINK](https://byob-dave-hubertus.herokuapp.com/api/v1/questions)
+
 [GET - All MLB Betting Odds](https://github.com/dhubertus/byob/blob/master/server.js#L73-L85)
 * (All Odds) - Allows the user to recieve all odds from a specific sport 
 
+[TEST WITH THIS LINK](https://byob-dave-hubertus.herokuapp.com/api/v1/odds)
+
 [GET - Single Question/Prop Bet](https://github.com/dhubertus/byob/blob/master/server.js#L105-L118)
 * (Single Question) - Allows the user to select a prop bet and recieve more information pertaining to the specific question.
+
+
 
 [GET - Single Set Odds](https://github.com/dhubertus/byob/blob/master/server.js#L88-L102)
 * (Single Odds) - Allows the user to then select the 'up to date' vegas odds for this game to assits with their decision.
