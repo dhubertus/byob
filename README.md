@@ -44,7 +44,7 @@ ___________________________________________________________________________
 [POST - Add New Question](https://github.com/dhubertus/byob/blob/master/server.js#L164-L186)
 * (New Question) - Auth Needed - When user requests updated prop bet list this endpoint allows for the questions to be added to the database.
 
-* Post to '/api/v1/newQuestion' with body: {
+* Post to 'https://byob-dave-hubertus.herokuapp.com/api/v1/newQuestion' with body: {
             "question": "Who will WIN this matchup?",
             "starttime": "7:00pm",
             "sport": "MLB",
@@ -61,12 +61,18 @@ ___________________________________________________________________________
 [PATCH - Remove Selection](https://github.com/dhubertus/byob/blob/master/server.js#L189-L204)
 * (Remove Select) - Auth Needed - Allows user to remove a bet before the deadline has passed. 
 
+* Patch to 'https://byob-dave-hubertus.herokuapp.com/api/v1/removeSelection' with body: {
+	"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imd1eSIsInBhc3N3b3JkIjoiZmllcmkiLCJpYXQiOjE1MDAwNjY3ODUsImV4cCI6MTUwMTI3Njc4NX0.CeaMG3ax9erdEANMmzyu5saqGoZ9WGGnLbuO27jwFHM"
+} 
 ___________________________________________________________________________
 
 
 [PATCH - Change Current Selection](https://github.com/dhubertus/byob/blob/master/server.js#L207-L224)
 * (Make Select) - Auth Needed - Allows the user to make a selection before the deadline has passed.
 
+* Patch to 'https://byob-dave-hubertus.herokuapp.com/api/v1/selection?selection=Houston Astros (60-29) Peacock' with body: {
+	"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imd1eSIsInBhc3N3b3JkIjoiZmllcmkiLCJpYXQiOjE1MDAwNjY3ODUsImV4cCI6MTUwMTI3Njc4NX0.CeaMG3ax9erdEANMmzyu5saqGoZ9WGGnLbuO27jwFHM"
+} 
 ___________________________________________________________________________
 
 
