@@ -17,35 +17,61 @@ ___________________________________________________________________________
 * (All Odds) - Allows the user to recieve all odds from a specific sport 
 
 [TEST WITH THIS LINK](https://byob-dave-hubertus.herokuapp.com/api/v1/odds)
+___________________________________________________________________________
+
 
 [GET - Single Question/Prop Bet](https://github.com/dhubertus/byob/blob/master/server.js#L105-L118)
 * (Single Question) - Allows the user to select a prop bet and recieve more information pertaining to the specific question.
 
 
+___________________________________________________________________________
 
 [GET - Single Set Odds](https://github.com/dhubertus/byob/blob/master/server.js#L88-L102)
 * (Single Odds) - Allows the user to then select the 'up to date' vegas odds for this game to assits with their decision.
 
+___________________________________________________________________________
+
+
 [POST - Authentication](https://github.com/dhubertus/byob/blob/master/server.js#L127-L149)
 * (Auth) - Allows the user to login allowing them to actually place their bets.
+
+___________________________________________________________________________
+
 
 [POST - Add New Question](https://github.com/dhubertus/byob/blob/master/server.js#L164-L186)
 * (New Question) - When user requests updated prop bet list this endpoint allows for the questions to be added to the database.
 
+___________________________________________________________________________
+
+
 [PATCH - Remove Selection](https://github.com/dhubertus/byob/blob/master/server.js#L189-L204)
 * (Remove Select) - Allows user to remove a bet before the deadline has passed. 
+
+___________________________________________________________________________
+
 
 [PATCH - Change Current Selection](https://github.com/dhubertus/byob/blob/master/server.js#L207-L224)
 * (Make Select) - Allows the user to make a selection before the deadline has passed.
 
+___________________________________________________________________________
+
+
 [DELETE - Delete All Final Results](https://github.com/dhubertus/byob/blob/master/server.js#L227-L239)
 * (Delete Final) - Allows user to remove prop bets that have concluded. 
+
+___________________________________________________________________________
+
 
 [DELETE - Delete Stale Question/Prop Bet Data](https://github.com/dhubertus/byob/blob/master/server.js#L242-L254)
 * (Delete Prop) - Allows the user to remove all stale prop bets so the database can be re-seeded with any new/updated bets. 
 
+___________________________________________________________________________
+
+
 [DELETE - Delete Stale Betting Odds Data](https://github.com/dhubertus/byob/blob/master/server.js#L257-L269)
 * (Delete Odds) - Allows the user to remove all stale odds so the database can be re-seeded with any new/updated odds.
+
+___________________________________________________________________________
 
 
 ### Layout of Streak Odds Table
