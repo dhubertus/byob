@@ -227,6 +227,7 @@ app.patch('/api/v1/selection', checkAuthorization, (req, res) => {
 app.delete('/api/v1/deleteFinal', checkAuthorization, (req, res) => {
   database('streak_data').where('status', 'Final').del()
     .then(result => {
+      console.log(result, 'res');
       if (result >= 1) {
         res.status(200).json(result);
       } else {

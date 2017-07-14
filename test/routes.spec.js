@@ -278,16 +278,6 @@ describe("delete Routes", () => {
 
     var token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imd1eSIsInBhc3N3b3JkIjoiZmllcmkiLCJpYXQiOjE0OTk5NzU3MTQsImV4cCI6MTUwMTE4NTcxNH0.eyUx3Sf0cKv7I48fyektD3sZdMkyGdLaZ1J30IE7zTY";
 
-  before((done) => {
-    knex.migrate.latest()
-    .then(() => {
-      knex.seed.run();
-    })
-    .then(() => {
-      done();
-    });
-  });
-
   it("should not delete games that have ended if not authorized", (done) => {
     chai.request(server)
     .delete("/api/v1/deleteFinal")
@@ -316,19 +306,6 @@ describe("delete Routes", () => {
   });
 
   it("should return error if there are no games to delete", (done) => {
-    chai.request(server)
-    .delete("/api/v1/deleteFinal")
-    .send({
-      token
-    })
-    .end((err, res) => {
-      res.should.have.status(200);
-      res.should.be.json;
-    });
-
-    setTimeout(()=> {
-      return;
-    }, 3000);
 
     chai.request(server)
     .delete("/api/v1/deleteFinal")
@@ -336,6 +313,9 @@ describe("delete Routes", () => {
       token
     })
     .end((err, res) => {
+      setTimeout(()=> {
+        return;
+      }, 3000);
       res.should.have.status(404);
       res.body.error.should.equal("There were no final results to delete!");
       res.should.be.json;
