@@ -40,37 +40,37 @@ ___________________________________________________________________________
 
 
 [POST - Add New Question](https://github.com/dhubertus/byob/blob/master/server.js#L164-L186)
-* (New Question) - When user requests updated prop bet list this endpoint allows for the questions to be added to the database.
+* (New Question) - Auth Needed - When user requests updated prop bet list this endpoint allows for the questions to be added to the database.
 
 ___________________________________________________________________________
 
 
 [PATCH - Remove Selection](https://github.com/dhubertus/byob/blob/master/server.js#L189-L204)
-* (Remove Select) - Allows user to remove a bet before the deadline has passed. 
+* (Remove Select) - Auth Needed - Allows user to remove a bet before the deadline has passed. 
 
 ___________________________________________________________________________
 
 
 [PATCH - Change Current Selection](https://github.com/dhubertus/byob/blob/master/server.js#L207-L224)
-* (Make Select) - Allows the user to make a selection before the deadline has passed.
+* (Make Select) - Auth Needed - Allows the user to make a selection before the deadline has passed.
 
 ___________________________________________________________________________
 
 
 [DELETE - Delete All Final Results](https://github.com/dhubertus/byob/blob/master/server.js#L227-L239)
-* (Delete Final) - Allows user to remove prop bets that have concluded. 
+* (Delete Final) - Auth Needed - Allows user to remove prop bets that have concluded. 
 
 ___________________________________________________________________________
 
 
 [DELETE - Delete Stale Question/Prop Bet Data](https://github.com/dhubertus/byob/blob/master/server.js#L242-L254)
-* (Delete Prop) - Allows the user to remove all stale prop bets so the database can be re-seeded with any new/updated bets. 
+* (Delete Prop) - Auth Needed - Allows the user to remove all stale prop bets so the database can be re-seeded with any new/updated bets. 
 
 ___________________________________________________________________________
 
 
 [DELETE - Delete Stale Betting Odds Data](https://github.com/dhubertus/byob/blob/master/server.js#L257-L269)
-* (Delete Odds) - Allows the user to remove all stale odds so the database can be re-seeded with any new/updated odds.
+* (Delete Odds) - Auth Needed - Allows the user to remove all stale odds so the database can be re-seeded with any new/updated odds.
 
 ___________________________________________________________________________
 
