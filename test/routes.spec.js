@@ -326,6 +326,10 @@ describe("delete Routes", () => {
       res.should.be.json;
     });
 
+    setTimeout(()=> {
+      return;
+    }, 3000);
+
     chai.request(server)
     .delete("/api/v1/deleteFinal")
     .send({
