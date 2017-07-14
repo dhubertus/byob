@@ -41,8 +41,13 @@
 * (Delete Odds) - Allows the user to remove all stale odds so the database can be re-seeded with any new/updated odds.
 
 
+### Layout of Streak Odds Table
 
+<img width="1010" alt="screen shot 2017-07-14 at 12 51 06 pm" src="https://user-images.githubusercontent.com/25044263/28226477-85db5dde-6893-11e7-9c24-5c22a8b85010.png">
 
+### Layout of MLB Odds Table
+
+<img width="1198" alt="screen shot 2017-07-14 at 12 50 47 pm" src="https://user-images.githubusercontent.com/25044263/28226506-9d8bc89c-6893-11e7-845c-473d2ef8c53f.png">
 
 
 
