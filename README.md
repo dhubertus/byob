@@ -22,18 +22,19 @@ ___________________________________________________________________________
 
 [GET - Single Question/Prop Bet](https://github.com/dhubertus/byob/blob/master/server.js#L105-L118)
 * (Single Question) - Allows the user to select a prop bet and recieve more information pertaining to the specific question.
-
+[TEST WITH THIS LINK](https://byob-dave-hubertus.herokuapp.com/api/v1/questions/NBA%20Summer%20League%20(Las%20Vegas,NV):%20Who%20will%20WIN%20this%20matchup?)
 
 ___________________________________________________________________________
 
 [GET - Single Set Odds](https://github.com/dhubertus/byob/blob/master/server.js#L88-L102)
 * (Single Odds) - Allows the user to then select the 'up to date' vegas odds for this game to assits with their decision.
-
+[TEST WITH THIS LINK](https://byob-dave-hubertus.herokuapp.com/api/v1/odds/902%20Chi.%20Cubs)
 ___________________________________________________________________________
 
 
 [POST - Authentication](https://github.com/dhubertus/byob/blob/master/server.js#L127-L149)
 * (Auth) - Allows the user to login allowing them to actually place their bets.
+
 
 ___________________________________________________________________________
 
