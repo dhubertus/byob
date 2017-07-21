@@ -50,17 +50,20 @@ ___________________________________________________________________________
 [POST - Add New Question](https://github.com/dhubertus/byob/blob/master/server.js#L164-L186)
 * (New Question) - Auth Needed - When user requests updated prop bet list this endpoint allows for the questions to be added to the database.
 
-* Post to 'https://byob-dave-hubertus.herokuapp.com/api/v1/newQuestion' with body: ```{
-            "question": "Who will WIN this matchup?",
-            "starttime": "7:00pm",
-            "sport": "MLB",
-            "status": "In Progress",
-            "optionOne": "950 Yankees",
-            "optionTwo": "951 Red Sox",
-            "oppOne": "40%",
-            "oppTwo": "60%",
-            "token":   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imd1eSIsInBhc3N3b3JkIjoiZmllcmkiLCJpYXQiOjE1MDAwNjY3ODUsImV4cCI6MTUwMTI3Njc4NX0.CeaMG3ax9erdEANMmzyu5saqGoZ9WGGnLbuO27jwFHM"
-          }```
+* Post to 'https://byob-dave-hubertus.herokuapp.com/api/v1/newQuestion' with body: 
+```
+{
+  "question": "Who will WIN this matchup?",
+  "starttime": "7:00pm",
+  "sport": "MLB",
+  "status": "In Progress",
+  "optionOne": "950 Yankees",
+  "optionTwo": "951 Red Sox",
+  "oppOne": "40%",
+  "oppTwo": "60%",
+  "token":   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imd1eSIsInBhc3N3b3JkIjoiZmllcmkiLCJpYXQiOjE1MDAwNjY3ODUsImV4cCI6MTUwMTI3Njc4NX0.CeaMG3ax9erdEANMmzyu5saqGoZ9WGGnLbuO27jwFHM"
+}
+```
 ___________________________________________________________________________
 
 
