@@ -61,7 +61,7 @@ ___________________________________________________________________________
   "optionTwo": "951 Red Sox",
   "oppOne": "40%",
   "oppTwo": "60%",
-  "token":   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imd1eSIsInBhc3N3b3JkIjoiZmllcmkiLCJpYXQiOjE1MDAwNjY3ODUsImV4cCI6MTUwMTI3Njc4NX0.CeaMG3ax9erdEANMmzyu5saqGoZ9WGGnLbuO27jwFHM"
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imd1eSIsInBhc3N3b3JkIjoiZmllcmkiLCJpYXQiOjE1MDAwNjY3ODUsImV4cCI6MTUwMTI3Njc4NX0.CeaMG3ax9erdEANMmzyu5saqGoZ9WGGnLbuO27jwFHM"
 }
 ```
 ___________________________________________________________________________
