@@ -9,16 +9,17 @@ chai.use(chaiHttp);
 
 describe("API Routes", () => {
 
-  var token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imd1eSIsInBhc3N3b3JkIjoiZmllcmkiLCJpYXQiOjE0OTk5NzU3MTQsImV4cCI6MTUwMTE4NTcxNH0.eyUx3Sf0cKv7I48fyektD3sZdMkyGdLaZ1J30IE7zTY";
-
 
   before((done) => {
-    knex.migrate.latest()
+    knex.migrate.rollback()
     .then(() => {
-      knex.seed.run();
-    })
-    .then(() => {
-      done();
+      knex.migrate.latest()
+      .then(() => {
+        knex.seed.run();
+      })
+      .then(() => {
+        done();
+      });
     });
   });
 
@@ -71,9 +72,9 @@ describe("API Routes", () => {
     });
   });
 
-  it("should return 200 when it hits /api/v1/questions/:singleQuestion", (done) => {
+  it("should return 200 when it hits /api/v1/questions/:singleQuestionId", (done) => {
     chai.request(server)
-    .get("/api/v1/questions/MLB: Who will WIN this matchup?")
+    .get("/api/v1/questions/3")
     .end((err, res) => {
       res.should.have.status(200);
       res.should.be.json;
@@ -81,9 +82,9 @@ describe("API Routes", () => {
     });
   });
 
-  it("should return 404 when it hits /api/v1/questions/:singleQuestion and the question does not exist", (done) => {
+  it("should return 404 when it hits /api/v1/questions/:singleQuestionId and the question does not exist", (done) => {
     chai.request(server)
-    .get("/api/v1/questions/Eating: How many hotdogs?")
+    .get("/api/v1/questions/1000")
     .end((err, res) => {
       res.should.have.status(404);
       res.should.be.json;
@@ -124,9 +125,9 @@ describe("API Routes", () => {
     });
   });
 
-  it("should return 200 when it hits /api/v1/newQuestion with proper body", (done) => {
+  it("should return 200 when it posts to /api/v1/questions with proper body", (done) => {
     chai.request(server)
-    .post("/api/v1/newQuestion")
+    .post("/api/v1/questions")
     .send({
       "question": "Who will WIN this matchup?",
       "starttime": "7:00pm",
@@ -136,7 +137,7 @@ describe("API Routes", () => {
       "optionTwo": "951 Red Sox",
       "oppOne": "40%",
       "oppTwo": "60%",
-      token
+      "token": process.env.TOKEN
     })
     .end((err, res) => {
       res.should.have.status(200);
@@ -145,12 +146,12 @@ describe("API Routes", () => {
     });
   });
 
-  it("should return 422 when it hits /api/v1/newQuestion without proper body", (done) => {
+  it("should return 422 when it posts to /api/v1/questions without proper body", (done) => {
     chai.request(server)
-    .post("/api/v1/newQuestion")
+    .post("/api/v1/questions")
     .send({
       "qasdfjaksdfj": "Who will WIN this matchup?",
-      token
+      "token": process.env.TOKEN
     })
     .end((err, res) => {
       res.should.have.status(422);
@@ -159,9 +160,9 @@ describe("API Routes", () => {
     });
   });
 
-  it("should return error when it hits /api/v1/newQuestion with proper body but no authentication", (done) => {
+  it("should return error when it hits /api/v1/questions with proper body but no authentication", (done) => {
     chai.request(server)
-    .post("/api/v1/newQuestion")
+    .post("/api/v1/questions")
     .send({
       "question": "Who will WIN this matchup?",
       "starttime": "7:00pm",
@@ -180,9 +181,9 @@ describe("API Routes", () => {
     });
   });
 
-  it("should return new question when it hits /api/v1/newQuestion with proper body and authentication", (done) => {
+  it("should insert new question when it hits /api/v1/question with proper body and authentication", (done) => {
     chai.request(server)
-    .post("/api/v1/newQuestion")
+    .post("/api/v1/questions")
     .send({
       "question": "Who will WIN this matchup?",
       "starttime": "7:00pm",
@@ -192,7 +193,7 @@ describe("API Routes", () => {
       "optionTwo": "951 Red Sox",
       "oppOne": "40%",
       "oppTwo": "60%",
-      token
+      "token": process.env.TOKEN
     })
     .end((err, res) => {
       res.should.have.status(200);
@@ -220,7 +221,7 @@ describe("API Routes", () => {
     chai.request(server)
     .patch("/api/v1/selection?selection=New York Liberty (8-8)")
     .send({
-      token
+      "token": process.env.TOKEN
     })
     .end((err, res) => {
       res.should.have.status(200);
@@ -248,7 +249,7 @@ describe("API Routes", () => {
     chai.request(server)
     .patch("/api/v1/removeSelection")
     .send({
-      token
+      "token": process.env.TOKEN
     })
     .end((err, res) => {
       res.should.have.status(200);
@@ -262,11 +263,11 @@ describe("API Routes", () => {
     chai.request(server)
     .patch("/api/v1/removeSelection")
     .send({
-      token
+      "token": process.env.TOKEN
     })
     .end((err, res) => {
       res.should.have.status(422);
-      res.body.error.should.equal("There was an error and this item was not triggered false!");
+      res.body.error.should.equal("There were no selected bets to overwrite to false! A bet must be selected in order to remove a selection!");
       res.should.be.json;
       done();
     });
@@ -310,7 +311,7 @@ describe("delete Routes", () => {
     chai.request(server)
     .delete("/api/v1/deleteFinal")
     .send({
-      token
+      "token": process.env.TOKEN
     })
     .end((err, res) => {
       setTimeout(()=> {
@@ -340,7 +341,7 @@ describe("delete Routes", () => {
     chai.request(server)
     .delete("/api/v1/deleteAllOdds")
     .send({
-      token
+      "token": process.env.TOKEN
     })
     .end((err, res) => {
       res.should.have.status(200);
@@ -354,7 +355,7 @@ describe("delete Routes", () => {
     chai.request(server)
     .delete("/api/v1/deleteAllOdds")
     .send({
-      token
+      "token": process.env.TOKEN
     })
     .end((err, res) => {
       res.should.have.status(404);

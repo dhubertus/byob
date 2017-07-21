@@ -102,9 +102,8 @@ app.get('/api/v1/odds/:singleSetOdds', (req, res) => {
 });
 
 //NOTE: returns all information for a single question from the database
-app.get('/api/v1/questions/:singleQuestion', (req, res) => {
-
-  database('streak_data').where('question', req.params.singleQuestion + '?')
+app.get('/api/v1/questions/:singleQuestionId', (req, res) => {
+  database('streak_data').where('id', req.params.singleQuestionId)
     .then(question => {
       if (question.length) {
         res.status(200).json(question);
@@ -118,12 +117,6 @@ app.get('/api/v1/questions/:singleQuestion', (req, res) => {
 });
 
 //NOTE: post to authenticate/login
-  //NOTE: example body for authenticating through postman
-          // {
-          //   "username": "guy",
-          //   "password": "fieri"
-          // }
-
 app.post('/api/v1/authenticate', (req, res) => {
   const userInfo = req.body;
 
@@ -149,19 +142,7 @@ app.post('/api/v1/authenticate', (req, res) => {
 });
 
 //NOTE: post to add new incoming bests
-  //NOTE: Example body below for creating new bet through Post Man
-          // {
-          //   "question": "Who will WIN this matchup?",
-          //   "starttime": "7:00pm",
-          //   "sport": "MLB",
-          //   "status": "In Progress",
-          //   "optionOne": "950 Yankees",
-          //   "optionTwo": "951 Red Sox",
-          //   "oppOne": "40%",
-          //   "oppTwo": "60%",
-          //   "token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImZvbyIsInBhc3N3b3JkIjoiYmFyIiwiaWF0IjoxNDk5ODk1NzY4LCJleHAiOjE1MDAwNjg1Njh9.u1qyb_k2LG8_oDMpiTs1FCw5sgG9jbk6atdazxi3J5o"
-          // }
-app.post('/api/v1/newQuestion', checkAuthorization, (req, res) => {
+app.post('/api/v1/questions', checkAuthorization, (req, res) => {
   database('streak_data')
     .insert({
       question: req.body.question,
@@ -177,7 +158,7 @@ app.post('/api/v1/newQuestion', checkAuthorization, (req, res) => {
       if (req.body.question) {
         res.status(200).json(result);
       } else {
-        res.status(422).json({ error: 'There was an error this question was not added!' });
+        res.status(422).json({ error: 'There was an error and this question was not added! Please check to make sure you are sending a body with this post that includes the proper attributes for creating a question.' });
       }
     })
     .catch(error => {
@@ -195,7 +176,7 @@ app.patch('/api/v1/removeSelection', checkAuthorization, (req, res) => {
       if (result === 1) {
         res.status(200).json(result);
       } else {
-        res.status(422).json({ error: 'There was an error and this item was not triggered false!' });
+        res.status(422).json({ error: 'There were no selected bets to overwrite to false! A bet must be selected in order to remove a selection!' });
       }
     })
     .catch(error => {
@@ -215,7 +196,7 @@ app.patch('/api/v1/selection', checkAuthorization, (req, res) => {
       if (result === 1) {
         res.status(200).json(result);
       } else {
-        res.status(422).json({ error: 'There was an error and you selection was not submitted!' });
+        res.status(422).json({ error: 'Your selection does not exist and was not submitted! Please check your selection is being sent as a query parameter!' });
       }
     })
     .catch(error => {
@@ -227,7 +208,6 @@ app.patch('/api/v1/selection', checkAuthorization, (req, res) => {
 app.delete('/api/v1/deleteFinal', checkAuthorization, (req, res) => {
   database('streak_data').where('status', 'Final').del()
     .then(result => {
-      console.log(result, 'res');
       if (result >= 1) {
         res.status(200).json(result);
       } else {
