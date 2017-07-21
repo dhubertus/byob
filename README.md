@@ -37,7 +37,9 @@ ___________________________________________________________________________
 [POST - Authentication](https://github.com/dhubertus/byob/blob/master/server.js#L127-L149)
 * (Auth) - Allows the user to login allowing them to actually place their bets.
 
-* Post to '/api/v1/authenticate' with body: ```{ "password": "guy", "password": "fieri" }```
+* Post to '/api/v1/authenticate' with body: ```
+{ "password": "guy", "password": "fieri" }
+```
 ___________________________________________________________________________
 
 
