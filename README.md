@@ -70,18 +70,24 @@ ___________________________________________________________________________
 [PATCH - Remove Selection](https://github.com/dhubertus/byob/blob/master/server.js#L189-L204)
 * (Remove Select) - Auth Needed - Allows user to remove a bet before the deadline has passed. 
 
-* Patch to 'https://byob-dave-hubertus.herokuapp.com/api/v1/removeSelection' with body: {
-	"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imd1eSIsInBhc3N3b3JkIjoiZmllcmkiLCJpYXQiOjE1MDAwNjY3ODUsImV4cCI6MTUwMTI3Njc4NX0.CeaMG3ax9erdEANMmzyu5saqGoZ9WGGnLbuO27jwFHM"
-} 
+* Patch to 'https://byob-dave-hubertus.herokuapp.com/api/v1/removeSelection' with body: 
+```
+{
+"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imd1eSIsInBhc3N3b3JkIjoiZmllcmkiLCJpYXQiOjE1MDAwNjY3ODUsImV4cCI6MTUwMTI3Njc4NX0.CeaMG3ax9erdEANMmzyu5saqGoZ9WGGnLbuO27jwFHM"
+}
+```
 ___________________________________________________________________________
 
 
 [PATCH - Change Current Selection](https://github.com/dhubertus/byob/blob/master/server.js#L207-L224)
 * (Make Select) - Auth Needed - Allows the user to make a selection before the deadline has passed.
 
-* Patch to 'https://byob-dave-hubertus.herokuapp.com/api/v1/selection?selection=Houston%20Astros%20(60-29)%20Peacock' with body: {
-	"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imd1eSIsInBhc3N3b3JkIjoiZmllcmkiLCJpYXQiOjE1MDAwNjY3ODUsImV4cCI6MTUwMTI3Njc4NX0.CeaMG3ax9erdEANMmzyu5saqGoZ9WGGnLbuO27jwFHM"
-} 
+* Patch to 'https://byob-dave-hubertus.herokuapp.com/api/v1/selection?selection=Houston%20Astros%20(60-29)%20Peacock' with body: 
+```
+{
+"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imd1eSIsInBhc3N3b3JkIjoiZmllcmkiLCJpYXQiOjE1MDAwNjY3ODUsImV4cCI6MTUwMTI3Njc4NX0.CeaMG3ax9erdEANMmzyu5saqGoZ9WGGnLbuO27jwFHM"
+}
+```
 ___________________________________________________________________________
 
 ### NOTE: With the current seeded data the below delete end points will delete entire tables since all games are final. The other two would be used for removing stale data for incoming up to date data. 
@@ -90,27 +96,36 @@ ___________________________________________________________________________
 [DELETE - Delete All Final Results](https://github.com/dhubertus/byob/blob/master/server.js#L227-L239)
 * (Delete Final) - Auth Needed - Allows user to remove prop bets that have concluded. 
 
-* Delete to 'https://byob-dave-hubertus.herokuapp.com/api/v1/deleteFinal' with body: {
-	"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imd1eSIsInBhc3N3b3JkIjoiZmllcmkiLCJpYXQiOjE1MDAwNjY3ODUsImV4cCI6MTUwMTI3Njc4NX0.CeaMG3ax9erdEANMmzyu5saqGoZ9WGGnLbuO27jwFHM"
-} 
+* Delete to 'https://byob-dave-hubertus.herokuapp.com/api/v1/deleteFinal' with body: 
+```
+{
+"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imd1eSIsInBhc3N3b3JkIjoiZmllcmkiLCJpYXQiOjE1MDAwNjY3ODUsImV4cCI6MTUwMTI3Njc4NX0.CeaMG3ax9erdEANMmzyu5saqGoZ9WGGnLbuO27jwFHM"
+}
+```
 ___________________________________________________________________________
 
 
 [DELETE - Delete Stale Question/Prop Bet Data](https://github.com/dhubertus/byob/blob/master/server.js#L242-L254)
 * (Delete Prop) - Auth Needed - Allows the user to remove all stale prop bets so the database can be re-seeded with any new/updated bets. 
 
-* Delete to 'https://byob-dave-hubertus.herokuapp.com/api/v1/deleteAllStreak' with body: {
-	"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imd1eSIsInBhc3N3b3JkIjoiZmllcmkiLCJpYXQiOjE1MDAwNjY3ODUsImV4cCI6MTUwMTI3Njc4NX0.CeaMG3ax9erdEANMmzyu5saqGoZ9WGGnLbuO27jwFHM"
-} 
+* Delete to 'https://byob-dave-hubertus.herokuapp.com/api/v1/deleteAllStreak' with body: 
+```
+{
+"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imd1eSIsInBhc3N3b3JkIjoiZmllcmkiLCJpYXQiOjE1MDAwNjY3ODUsImV4cCI6MTUwMTI3Njc4NX0.CeaMG3ax9erdEANMmzyu5saqGoZ9WGGnLbuO27jwFHM"
+}
+```
 ___________________________________________________________________________
 
 
 [DELETE - Delete Stale Betting Odds Data](https://github.com/dhubertus/byob/blob/master/server.js#L257-L269)
 * (Delete Odds) - Auth Needed - Allows the user to remove all stale odds so the database can be re-seeded with any new/updated odds.
 
-* Delete to 'https://byob-dave-hubertus.herokuapp.com/api/v1/deleteAllOdds' with body: {
-	"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imd1eSIsInBhc3N3b3JkIjoiZmllcmkiLCJpYXQiOjE1MDAwNjY3ODUsImV4cCI6MTUwMTI3Njc4NX0.CeaMG3ax9erdEANMmzyu5saqGoZ9WGGnLbuO27jwFHM"
-} 
+* Delete to 'https://byob-dave-hubertus.herokuapp.com/api/v1/deleteAllOdds' with body: 
+```
+{
+"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imd1eSIsInBhc3N3b3JkIjoiZmllcmkiLCJpYXQiOjE1MDAwNjY3ODUsImV4cCI6MTUwMTI3Njc4NX0.CeaMG3ax9erdEANMmzyu5saqGoZ9WGGnLbuO27jwFHM"
+}
+```
 ___________________________________________________________________________
 
 
