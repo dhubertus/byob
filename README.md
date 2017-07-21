@@ -23,7 +23,7 @@ ___________________________________________________________________________
 [GET - Single Question/Prop Bet](https://github.com/dhubertus/byob/blob/master/server.js#L105-L118)
 * (Single Question) - Allows the user to select a prop bet and recieve more information pertaining to the specific question.</br>
 
-[TEST WITH THIS LINK](https://byob-dave-hubertus.herokuapp.com/api/v1/questions/NBA%20Summer%20League%20(Las%20Vegas,NV):%20Who%20will%20WIN%20this%20matchup?)
+[TEST WITH THIS LINK](https://byob-dave-hubertus.herokuapp.com/api/v1/questions/5)
 
 ___________________________________________________________________________
 
@@ -50,7 +50,7 @@ ___________________________________________________________________________
 [POST - Add New Question](https://github.com/dhubertus/byob/blob/master/server.js#L164-L186)
 * (New Question) - Auth Needed - When user requests updated prop bet list this endpoint allows for the questions to be added to the database.
 
-* Post to 'https://byob-dave-hubertus.herokuapp.com/api/v1/newQuestion' with body: 
+* Post to 'https://byob-dave-hubertus.herokuapp.com/api/v1/questions' with body: 
 ```
 {
   "question": "Who will WIN this matchup?",
